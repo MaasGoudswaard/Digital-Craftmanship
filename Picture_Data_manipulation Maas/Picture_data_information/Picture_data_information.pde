@@ -15,9 +15,9 @@ void draw() {
       int loc = x + y*width;
       
       // The functions red(), green(), and blue() pull out the 3 color components from a pixel.
-      float r = red(img.pixels[loc]);
-      float g = green(img.pixels[loc]);
-      float b = blue(img.pixels[loc]);
+      float g = red(img.pixels[loc]);
+      float b = green(img.pixels[loc]);
+      float r = blue(img.pixels[loc]);
       
       // Image Processing would go here
       // If we were to change the RGB values, we would do it here, 
