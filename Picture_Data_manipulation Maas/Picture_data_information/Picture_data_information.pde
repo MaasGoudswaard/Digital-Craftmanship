@@ -12,5 +12,4 @@ void setup() {
   background(0);
   lines = loadBytes("PF data.txt");
   println("there are " + lines.length + " lines");
-
 }
