@@ -28,7 +28,7 @@ boolean longtile;
 
 void setup() {
   // Images must be in the "data" directory to load correctly
-  img = loadImage("pf 500500.JPG");
+  img = loadImage("pf 100100.JPG");
 
   cols = width/cellsize;             // Calculate # of columns
   rows = height/cellsize;            // Calculate # of rows
@@ -36,16 +36,16 @@ void setup() {
   lines = loadBytes("PF data.txt");
   println("there are " + lines.length + " lines");
   output = createWriter("rawcode.txt");
-  size(500, 500);
+  size(100, 100);
   y = starty;
   x = startx;
   z = layerheight;
-  output.print("G0");
-  output.print(" X"); 
+  output.print("G0");   
+  output.print(" X");   
   output.print(startx); 
-  output.print(" Y"); 
-  output.print(starty);
-  output.print(" Z"); 
+  output.print(" Y");   
+  output.print(starty); 
+  output.print(" Z");   
   output.println(z);
 }
 
@@ -70,13 +70,14 @@ void draw() {
         // Set the display pixel to the image pixel
         float cumsum = ((r+g+b)/(3*7));
         if (cumsum > zcount) {
-          output.print("G1");
+          output.print("G0");
           output.print(" X"); 
           output.print(x*0.5); 
           output.print(" Y"); 
           output.print(y*0.5);
           output.print(" Z"); 
-          output.print(zcount*layerheight);
+          output.println(zcount*layerheight);
+          output.print("G1");
           output.print(" E");
           output.println(e);
           pixels[loc] = color(cumsum*10);
