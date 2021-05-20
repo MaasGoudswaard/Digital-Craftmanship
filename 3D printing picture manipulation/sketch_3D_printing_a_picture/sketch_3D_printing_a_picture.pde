@@ -79,7 +79,10 @@ void draw() {
           output.println(zcount*layerheight);
           output.print("G1");
           output.print(" E");
-          output.println(e);
+          output.println(e+3);
+          output.print("G1");
+          output.print(" E");
+          output.println(-3);
           pixels[loc] = color(cumsum*10);
         }
       }
