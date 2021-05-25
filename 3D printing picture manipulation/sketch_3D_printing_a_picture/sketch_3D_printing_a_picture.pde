@@ -8,7 +8,7 @@ int layer = 0;
 float y = 0;
 float x = 0;
 float z = 0;
-float e = 0.03326;
+float e = 0.05;
 float E = 0;
 float nozzle = 0.4;
 float layerheight = 0.2;
@@ -28,7 +28,7 @@ boolean longtile;
 
 void setup() {
   // Images must be in the "data" directory to load correctly
-  img = loadImage("pf 100100.JPG");
+  img = loadImage("pf 500500.JPG");
 
   cols = width/cellsize;             // Calculate # of columns
   rows = height/cellsize;            // Calculate # of rows
@@ -36,7 +36,7 @@ void setup() {
   lines = loadBytes("PF data.txt");
   println("there are " + lines.length + " lines");
   output = createWriter("rawcode.txt");
-  size(100, 100);
+  size(500, 500);
   y = starty;
   x = startx;
   z = layerheight;
@@ -71,19 +71,23 @@ void draw() {
         float cumsum = ((r+g+b)/(3*7));
         if (cumsum > zcount) {
           output.print("G0");
+          output.print(" F1000"); 
           output.print(" X"); 
-          output.print(x*0.5); 
+          output.print(x*0.6); 
           output.print(" Y"); 
-          output.print(y*0.5);
+          output.print(y*0.6);
+          output.print(" Z"); 
+          output.println(zcount*layerheight+0.2);
+          output.print("G1");
           output.print(" Z"); 
           output.println(zcount*layerheight);
           output.print("G1");
           output.print(" E");
-          output.println(e+3);
+          output.println(e+0.1);
           output.print("G1");
           output.print(" E");
-          output.println(-3);
-          pixels[loc] = color(cumsum*10);
+          output.println(-0.1);
+          pixels[loc] = color(cumsum);
         }
       }
       updatePixels();

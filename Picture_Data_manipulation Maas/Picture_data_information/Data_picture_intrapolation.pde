@@ -6,6 +6,7 @@ void draw() {
   img.loadPixels(); 
   for (int y = 0; y < height; y++) {
     for (int x = 0; x < width; x++) {
+
       int loc = x + y*width;
 
       // The functions red(), green(), and blue() pull out the 3 color components from a pixel.
@@ -17,12 +18,16 @@ void draw() {
       // If we were to change the RGB values, we would do it here, 
       // before setting the pixel in the display window.
       // Set the display pixel to the image pixel
-      if (r>100) {
-        if (loc<lines.length) {
-          if (loclines+1<lines.length) {
+
+      // Print a blank line at the end 
+      if (r>220) {
+        i++;
+        if (i<pd.length) {
+          if (loclines+1<pd.length) {
             loclines++;
           }
-          pixels[loc] =  color(lines[loclines]);
+          pdm = pd[loclines] & 0xff;
+          pixels[loc] =  color(pdm);
         }
       } else {
         pixels[loc] =  color(g, b, r);
@@ -30,4 +35,6 @@ void draw() {
     }
     updatePixels();
   }
+  saveFrame("Final Picture.PNG");
+  noLoop();
 }
